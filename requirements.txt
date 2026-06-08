@@ -83,7 +83,7 @@ pandas==3.0.3
 pillow==12.2.0
 propcache==0.5.2
 protobuf==6.33.6
-pyarrow==16.1.0
+pyarrow==17.0.0
 pybase64==1.4.3
 pydantic==2.13.4
 pydantic-settings==2.14.1
