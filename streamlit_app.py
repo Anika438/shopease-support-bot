@@ -2,11 +2,12 @@ import streamlit as st
 import requests
 
 st.set_page_config(page_title='ShopEase Support', page_icon='🛍️')
+RAILWAY_URL="https://shopease-support-bot-production.up.railway.app"
 with st.sidebar:
   st.title('ShopEase Customer Support')
   st.markdown("Hello, I am Chuggy, your virtual assistant for ShopEase. I can help you with your orders, returns, product information, and more. Just ask me anything related to ShopEase, and I'll do my best to assist you!")
   if st.button('Clear chat history'):
-    response = requests.delete(f"http://localhost:8000/history/{st.session_state.session_id}")
+    response = requests.delete(f"{RAILWAY_URL}/history/{st.session_state.session_id}")
     st.session_state['messages'] = []
     st.rerun()
 
@@ -26,7 +27,7 @@ if 'messages' not in st.session_state:
     st.session_state.messages = []
     try:
         res = requests.get(
-            f"http://localhost:8000/history/{st.session_state.session_id}"
+            f"{RAILWAY_URL}/history/{st.session_state.session_id}"
         )
         if res.status_code == 200:
             st.session_state.messages = res.json()['messages']
@@ -48,7 +49,7 @@ if prompt:
     with st.chat_message('assistant'):
       with st.spinner('Thinking..'):
         try:
-          api_url="http://localhost:8000/chat"
+          api_url=f"{RAILWAY_URL}/chat"
           response=requests.post(api_url,json={'message':prompt,'session_id':st.session_state.session_id})
           answer=response.json()['answer']
           sources=response.json()['sources']

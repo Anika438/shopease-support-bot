@@ -83,7 +83,8 @@ async def chat(request: ChatRequest):
         history = get_history(request.session_id)
         
         if is_action_query(request.message,history=history):
-            answer = run_agent(request.message, history=history)
+            recent_history = history[-4:] if history else []
+            answer = run_agent(request.message, history=recent_history)
             sources = []
             mode="Agent"
         else:
