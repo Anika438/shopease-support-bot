@@ -1,6 +1,6 @@
 # ShopEase Support Bot 🛍️
 
-A production-grade customer support chatbot combining RAG (Retrieval-Augmented Generation) with an agentic AI layer — built with FastAPI, ChromaDB, LangGraph, Groq, and Streamlit.
+An AI customer support chatbot combining RAG (Retrieval-Augmented Generation) with an agentic AI layer — built with FastAPI, ChromaDB, LangGraph, Groq, and Streamlit.
 
 Rather than a traditional chatbot with predefined response tracks, ShopEase understands the **intent** behind every message and either answers from a knowledge base or takes real actions like checking order status, cancelling orders, or updating shipping addresses.
 
